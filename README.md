@@ -57,9 +57,16 @@ See `CONTRIBUTING.md` for local development and contribution workflow.
 
 This repository follows SemVer for published packages.
 
-- Version source of truth: package `composer.json` files
+- Version source of truth: release-please manifest and Git tags
 - Change communication: GitHub releases and commit history
 - Release automation: release-please (`.github/workflows/release-please.yml`)
+
+Release-please is the release authority. After it creates a release, a
+Monorepo Builder `after-release` stage opens the next dev cycle by updating
+package branch aliases and future inter-package constraints.
+
+Set a repository secret named `RELEASE_PLEASE_TOKEN` to a PAT if you want the
+release PRs and post-release commits to trigger downstream GitHub Actions.
 
 Releases should be reproducible and low-risk through automated CI checks.
 

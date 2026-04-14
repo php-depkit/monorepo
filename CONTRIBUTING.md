@@ -34,3 +34,7 @@ composer ci
 - Run `composer ci` before opening a pull request.
 - Explain the motivation and impact in the PR description.
 - Use conventional commits (`feat:`, `fix:`, `feat!:`) for release automation.
+- Release tags are created by release-please; Monorepo Builder handles the
+  post-release next-dev updates.
+- Configure the `RELEASE_PLEASE_TOKEN` repository secret with a PAT so
+  release automation can trigger downstream workflows.

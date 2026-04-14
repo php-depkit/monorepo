@@ -9,5 +9,10 @@
         "psr-4": {
             "PhpDepkit\\SbomCli\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.2-dev"
+        }
     }
 }

@@ -1,6 +1,7 @@
 {
     "name": "php-depkit/monorepo",
     "description": "PHP SBOM monorepo",
+    "license": "MIT",
     "require": {
         "php": ">=8.3"
     },
@@ -30,6 +31,7 @@
         "php-depkit/manifests": "self.version",
         "php-depkit/purl": "self.version",
         "php-depkit/registries": "self.version",
+        "php-depkit/sbom-cli": "self.version",
         "php-depkit/sbom-scanner": "self.version"
     },
     "autoload": {
@@ -39,8 +41,10 @@
             "PhpDepkit\\EcosystemClient\\": "packages/ecosystem-client/src/",
             "PhpDepkit\\Enrichment\\": "packages/enrichment/src/",
             "PhpDepkit\\Manifests\\": "packages/manifests/src/",
+            "PhpDepkit\\MonorepoBuilder\\": "tools/MonorepoBuilder/",
             "PhpDepkit\\Purl\\": "packages/purl/src/",
             "PhpDepkit\\Registries\\": "packages/registries/src/",
+            "PhpDepkit\\SbomCli\\": "packages/sbom-cli/src/",
             "PhpDepkit\\SbomScanner\\": "packages/sbom-scanner/src/"
         }
     },
