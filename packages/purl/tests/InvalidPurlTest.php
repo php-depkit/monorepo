@@ -15,11 +15,17 @@ use PHPUnit\Framework\TestCase;
 final class InvalidPurlTest extends TestCase
 {
     #[DataProvider('invalidParseCases')]
-    public function test_it_rejects_invalid_parse_inputs(string $input): void
+    public function test_it_rejects_invalid_parse_inputs(string $input, array $expectedContext): void
     {
-        $this->expectException(InvalidPurl::class);
+        try {
+            Parser::parse($input);
 
-        Parser::parse($input);
+            self::fail('Expected parse input to be rejected.');
+        } catch (InvalidPurl $exception) {
+            self::assertSame('Invalid package URL.', $exception->getMessage());
+            self::assertSame($expectedContext, $exception->context());
+            self::assertStringNotContainsString($input, $exception->getMessage());
+        }
     }
 
     #[DataProvider('invalidBuildCases')]
@@ -48,14 +54,20 @@ final class InvalidPurlTest extends TestCase
     }
 
     /**
-     * @return array<string, array{0: string}>
+     * @return array<string, array{0: string, 1: array{component: string, reason: string}}>
      */
     public static function invalidParseCases(): array
     {
         $cases = require __DIR__ . '/Fixtures/ConformanceCases.php';
 
         return array_map(
-            static fn (array $case): array => [$case['input']],
+            static fn (array $case): array => [
+                $case['input'],
+                [
+                    'component' => $case['component'],
+                    'reason' => $case['reason'],
+                ],
+            ],
             $cases['invalid']['parse'],
         );
     }
