@@ -157,23 +157,28 @@ return [
         'parse' => [
             'missing pkg scheme' => [
                 'input' => 'composer/guzzlehttp/promises@2.0.2',
-                'reason' => 'missing pkg:',
+                'component' => 'scheme',
+                'reason' => 'missing',
             ],
             'missing type' => [
                 'input' => 'pkg:/promises@2.0.2',
-                'reason' => 'missing type',
+                'component' => 'type',
+                'reason' => 'missing',
             ],
             'missing name' => [
                 'input' => 'pkg:npm',
-                'reason' => 'missing name',
+                'component' => 'name',
+                'reason' => 'missing',
             ],
             'invalid qualifier key' => [
                 'input' => 'pkg:generic/artifact?in production=true',
-                'reason' => 'invalid qualifier key',
+                'component' => 'qualifiers',
+                'reason' => 'invalid_key',
             ],
             'malformed encoded separator' => [
                 'input' => 'pkg:generic/artifact?download_url=https:%2F%2Fexample.com%2archive.tgz',
-                'reason' => 'malformed percent encoding',
+                'component' => 'qualifiers',
+                'reason' => 'invalid_encoding',
             ],
         ],
         'build' => [
