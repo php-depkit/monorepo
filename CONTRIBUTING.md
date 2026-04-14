@@ -33,3 +33,4 @@ composer ci
 - Add or update tests when behavior changes.
 - Run `composer ci` before opening a pull request.
 - Explain the motivation and impact in the PR description.
+- Use conventional commits (`feat:`, `fix:`, `feat!:`) for release automation.

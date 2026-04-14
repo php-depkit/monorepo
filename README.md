@@ -59,8 +59,12 @@ This repository follows SemVer for published packages.
 
 - Version source of truth: package `composer.json` files
 - Change communication: GitHub releases and commit history
+- Release automation: release-please (`.github/workflows/release-please.yml`)
 
 Releases should be reproducible and low-risk through automated CI checks.
+
+Use conventional commits (`feat:`, `fix:`, `feat!:`) so release-please can
+build release notes and version bumps correctly.
 
 ## License
 
