@@ -118,6 +118,34 @@ echo $purl->toString();
 // pkg:generic/artifact@1.0.0?checksum=sha256:abc123,sha512:def456&download_url=https:%2F%2Fexample.com%2Farchive.tgz
 ```
 
+### Handle invalid input
+
+Catch `InvalidPurl` around `Parser::parse()` when you accept user input or external package data. The exception message stays generic. Use `context()` as the stable inspection point.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use PhpDepkit\Purl\Exception\InvalidPurl;
+use PhpDepkit\Purl\Parser;
+
+try {
+    Parser::parse('pkg:generic/artifact?in production=true');
+} catch (InvalidPurl $exception) {
+    $context = $exception->context();
+
+    if ($context['component'] === 'qualifiers' && $context['reason'] === 'invalid_key') {
+        echo 'The package URL contains an unsupported qualifier key.';
+    }
+}
+```
+
+`context()` returns the supported parse failure shape:
+
+- `component`
+- `reason`
+
 ## Public API
 
 ### `Parser::parse(string $purl): Purl`
@@ -153,7 +181,7 @@ The returned object exposes:
 
 ## Invalid input handling
 
-Parse failures raise `InvalidPurl`. Keep the message generic in your own error handling and read `context()` when you need the stable failure details.
+Parse failures raise `InvalidPurl`. Keep the message generic in your own error handling and read `context()` when you need stable failure details.
 
 ```php
 <?php
