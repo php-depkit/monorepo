@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PhpDepkit\Purl\Tests;
 
 use PhpDepkit\Purl\Parser;
+use PhpDepkit\Purl\Purl;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -15,6 +16,7 @@ final class ParseRoundTripConformanceTest extends TestCase
     {
         $purl = Parser::parse($input);
 
+        self::assertInstanceOf(Purl::class, $purl);
         $this->assertPurlComponents($purl, $expected);
         self::assertSame($expected['canonical'], $purl->toString());
     }
@@ -24,11 +26,13 @@ final class ParseRoundTripConformanceTest extends TestCase
     {
         $parsed = Parser::parse($input);
 
+        self::assertInstanceOf(Purl::class, $parsed);
         $this->assertPurlComponents($parsed, $expected);
         self::assertSame($canonical, $parsed->toString());
 
         $reparsed = Parser::parse($canonical);
 
+        self::assertInstanceOf(Purl::class, $reparsed);
         $this->assertPurlComponents($reparsed, $expected);
         self::assertSame($canonical, $reparsed->toString());
     }
@@ -59,7 +63,7 @@ final class ParseRoundTripConformanceTest extends TestCase
         );
     }
 
-    private function assertPurlComponents(object $purl, array $expected): void
+    private function assertPurlComponents(Purl $purl, array $expected): void
     {
         self::assertSame($expected['type'], $purl->type());
         self::assertSame($expected['namespace'], $purl->namespace());
