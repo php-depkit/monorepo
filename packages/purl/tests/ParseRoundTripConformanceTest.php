@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 final class ParseRoundTripConformanceTest extends TestCase
 {
     #[DataProvider('parseCases')]
-    public function test_it_parses_expected_components(string $input, array $expected): void
+    public function testItParsesExpectedComponents(string $input, array $expected): void
     {
         $purl = Parser::parse($input);
 
@@ -20,7 +20,7 @@ final class ParseRoundTripConformanceTest extends TestCase
     }
 
     #[DataProvider('roundTripCases')]
-    public function test_it_round_trips_to_canonical_output(string $input, string $canonical, array $expected): void
+    public function testItRoundTripsToCanonicalOutput(string $input, string $canonical, array $expected): void
     {
         $parsed = Parser::parse($input);
 

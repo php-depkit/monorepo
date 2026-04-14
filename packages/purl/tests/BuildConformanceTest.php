@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class BuildConformanceTest extends TestCase
 {
-    public function test_it_normalizes_whitespace_only_optional_components(): void
+    public function testItNormalizesWhitespaceOnlyOptionalComponents(): void
     {
         $purl = PurlFactory::make(
             type: 'npm',
@@ -29,7 +29,7 @@ final class BuildConformanceTest extends TestCase
     }
 
     #[DataProvider('buildCases')]
-    public function test_it_builds_canonical_purls_from_components(array $case): void
+    public function testItBuildsCanonicalPurlsFromComponents(array $case): void
     {
         $purl = PurlFactory::make(
             type: $case['type'],

@@ -68,3 +68,8 @@ Temporary Items
 # END genignore
 
 PRD*.md
+
+# tooling caches
+.ecs_cache
+.phpunit.cache/
+var/

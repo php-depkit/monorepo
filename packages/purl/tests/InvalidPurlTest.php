@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PhpDepkit\Purl\Tests;
 
 use PhpDepkit\Purl\Exception\Build\InvalidQualifierKey;
-use PhpDepkit\Purl\Exception\InvalidPurl;
 use PhpDepkit\Purl\Exception\Build\MissingRequiredComponent;
+use PhpDepkit\Purl\Exception\InvalidPurl;
 use PhpDepkit\Purl\Parser;
 use PhpDepkit\Purl\PurlFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 final class InvalidPurlTest extends TestCase
 {
     #[DataProvider('invalidParseCases')]
-    public function test_it_rejects_invalid_parse_inputs(string $input): void
+    public function testItRejectsInvalidParseInputs(string $input): void
     {
         $this->expectException(InvalidPurl::class);
 
@@ -23,7 +23,7 @@ final class InvalidPurlTest extends TestCase
     }
 
     #[DataProvider('invalidBuildCases')]
-    public function test_it_rejects_invalid_build_inputs(array $case, array $expectation): void
+    public function testItRejectsInvalidBuildInputs(array $case, array $expectation): void
     {
         try {
             PurlFactory::make(

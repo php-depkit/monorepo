@@ -11,7 +11,7 @@ use ReflectionClass;
 
 final class PurlCanonicalModelTest extends TestCase
 {
-    public function test_it_is_a_readonly_value_object(): void
+    public function testItIsAReadonlyValueObject(): void
     {
         $reflection = new ReflectionClass(Purl::class);
 
@@ -20,7 +20,7 @@ final class PurlCanonicalModelTest extends TestCase
     }
 
     #[DataProvider('canonicalModelCases')]
-    public function test_it_exposes_canonical_components_and_rendering(array $input, array $expected): void
+    public function testItExposesCanonicalComponentsAndRendering(array $input, array $expected): void
     {
         $purl = new Purl(
             type: $input['type'],
