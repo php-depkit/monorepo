@@ -1,0 +1,45 @@
+{
+    "name": "php-depkit/monorepo",
+    "description": "PHP SBOM monorepo",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.0",
+        "symplify/monorepo-builder": "^11.0"
+    },
+    "replace": {
+        "php-depkit/advisories": "self.version",
+        "php-depkit/dev-deps-client": "self.version",
+        "php-depkit/ecosystem-client": "self.version",
+        "php-depkit/enrichment": "self.version",
+        "php-depkit/manifests": "self.version",
+        "php-depkit/purl": "self.version",
+        "php-depkit/registries": "self.version",
+        "php-depkit/sbom-scanner": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpDepkit\\Advisories\\": "packages/advisories/src/",
+            "PhpDepkit\\DevDepsClient\\": "packages/dev-deps-client/src/",
+            "PhpDepkit\\EcosystemClient\\": "packages/ecosystem-client/src/",
+            "PhpDepkit\\Enrichment\\": "packages/enrichment/src/",
+            "PhpDepkit\\Manifests\\": "packages/manifests/src/",
+            "PhpDepkit\\Purl\\": "packages/purl/src/",
+            "PhpDepkit\\Registries\\": "packages/registries/src/",
+            "PhpDepkit\\SbomScanner\\": "packages/sbom-scanner/src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symplify/monorepo-builder": true
+        }
+    },
+    "extra": {
+        "symplify/monorepo-builder": {
+            "package_directories": [
+                "packages"
+            ]
+        }
+    }
+}
