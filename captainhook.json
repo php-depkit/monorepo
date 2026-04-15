@@ -1,0 +1,47 @@
+{
+    "config": {
+        "bootstrap": "vendor/autoload.php",
+        "fail-on-first-error": false,
+        "verbosity": "verbose"
+    },
+    "commit-msg": {
+        "enabled": true,
+        "actions": [
+            {
+                "action": "\\Ramsey\\CaptainHook\\ValidateConventionalCommit"
+            }
+        ]
+    },
+    "pre-commit": {
+        "enabled": true,
+        "actions": [
+            {
+                "action": "\\PhpDepkit\\CaptainHook\\RunComposerScript",
+                "options": {
+                    "script": "ecs"
+                },
+                "config": {
+                    "label": "composer ecs"
+                }
+            },
+            {
+                "action": "\\PhpDepkit\\CaptainHook\\RunComposerScript",
+                "options": {
+                    "script": "stan"
+                },
+                "config": {
+                    "label": "composer stan"
+                }
+            },
+            {
+                "action": "\\PhpDepkit\\CaptainHook\\RunComposerScript",
+                "options": {
+                    "script": "test"
+                },
+                "config": {
+                    "label": "composer test"
+                }
+            }
+        ]
+    }
+}

@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 final class InvalidPurlTest extends TestCase
 {
     #[DataProvider('invalidParseCases')]
-    public function test_it_rejects_invalid_parse_inputs(string $input, array $expectedContext): void
+    public function testItRejectsInvalidParseInputs(string $input, array $expectedContext): void
     {
         try {
             Parser::parse($input);

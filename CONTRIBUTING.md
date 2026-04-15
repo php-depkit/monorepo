@@ -11,6 +11,10 @@ Thanks for contributing.
 ./.wt/setup
 ```
 
+`composer install` also installs the local CaptainHook hooks. Commits must use
+the Conventional Commits format, and pre-commit runs `composer ecs`,
+`composer stan`, and `composer test`.
+
 ## Run Checks
 
 Use the root Composer scripts:

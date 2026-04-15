@@ -9,7 +9,10 @@
         "phpstan/phpstan": "^1.12",
         "phpunit/phpunit": "^12.0",
         "symplify/easy-coding-standard": "^11.5",
-        "symplify/monorepo-builder": "^11.0"
+        "symplify/monorepo-builder": "^11.0",
+        "captainhook/captainhook": "^5.29",
+        "ramsey/conventional-commits": "^1.7",
+        "captainhook/hook-installer": "^1.0"
     },
     "scripts": {
         "test": "@php tools/phpunit-all-packages.php",
@@ -48,9 +51,15 @@
             "PhpDepkit\\SbomScanner\\": "packages/sbom-scanner/src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpDepkit\\CaptainHook\\": "tools/CaptainHook/"
+        }
+    },
     "config": {
         "allow-plugins": {
-            "symplify/monorepo-builder": true
+            "symplify/monorepo-builder": true,
+            "captainhook/hook-installer": true
         }
     },
     "extra": {

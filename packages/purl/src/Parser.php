@@ -12,7 +12,7 @@ final class Parser
 
     public static function parse(string $purl): Purl
     {
-        if (!str_starts_with($purl, 'pkg:')) {
+        if (! str_starts_with($purl, 'pkg:')) {
             throw self::invalid(component: 'scheme', reason: 'missing');
         }
 
@@ -146,7 +146,7 @@ final class Parser
         $segments = explode('/', $path);
         $rawName = array_pop($segments);
 
-        if ($rawName === null || $rawName === '') {
+        if ($rawName === '') {
             throw self::invalid(component: 'name', reason: 'missing');
         }
 
